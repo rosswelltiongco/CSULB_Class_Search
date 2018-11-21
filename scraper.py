@@ -50,4 +50,12 @@ for container in containers:
             room = data[8]
             prof = data[9]
 
-            print(className[0:10],day,time,room,prof)
+            if room not in rooms:
+                rooms[room] = [day+time]
+            else:
+                #just update
+                rooms[room].append(day+time)
+
+
+print(rooms["ECS-404"])
+print(len(rooms["ECS-404"]))
