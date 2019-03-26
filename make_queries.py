@@ -47,11 +47,12 @@ for x in allClasses:
     allInfo[x] = get_times(x)
 
 
-import pickle
 
-f = open('store.pckl', 'wb')
-pickle.dump(allInfo, f)
-f.close()
+import json
+
+with open('data.json', 'w') as outfile:
+    json.dump(allInfo, outfile)
+
 
 
 conn.close()
