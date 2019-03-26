@@ -34,9 +34,24 @@ def get_times(classroom):
 
 # print(util.get_today())
 # print(util.get_current_time())
-allClasses = get_all_classrooms()
 # NOTE: cannot call it class, why?
-for classroom in allClasses:
-    print(classroom,util.isOpen(get_times(classroom)))
+allClasses = get_all_classrooms()
+
+# for classroom in allClasses:
+#     if "VEC" in classroom:
+#         print(classroom,util.isOpen(get_times(classroom)))
+
+
+allInfo = {}
+for x in allClasses:
+    allInfo[x] = get_times(x)
+
+
+import pickle
+
+f = open('store.pckl', 'wb')
+pickle.dump(allInfo, f)
+f.close()
+
 
 conn.close()
