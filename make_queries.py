@@ -4,6 +4,7 @@
 
 
 import sqlite3
+import utilities as util
 
 conn = sqlite3.connect('current_semester.db')
 # cursor = conn.cursor()
@@ -30,6 +31,10 @@ def get_times(classroom):
             all_times.append(day + " " + time)
     return all_times
 
-print(get_times("ecs-407"))
+# print(get_times("ecs-407"))
+
+# print(util.get_today())
+# print(util.get_current_time())
+print(util.isOpen(get_times("ecs-407")))
 
 conn.close()

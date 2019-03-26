@@ -4,7 +4,11 @@
 4) Show availabilities for a specific classroom
 
 
+
+
 1) button for each building
     - if button is pushed, show all open rooms in order of longest available
 2) show all classes that are available at when given a time
 3) show when classroom is available given classroom
+
+todo: have make_database generaet a file with classrooms and their times as well
