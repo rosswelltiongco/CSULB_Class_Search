@@ -99,7 +99,7 @@ def isOpen(classroomTimes):
             startTime = convert_time(time).split('-')[0]
             endTime = convert_time(time).split('-')[1]
             if int(startTime) < currentTime < int(endTime):
-                print("Class is used", time)
+                print(time)
                 return False
     # If none of the times are used by either day or time, it is open
     return True

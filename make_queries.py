@@ -19,7 +19,6 @@ def get_all_classrooms():
     all_classrooms.sort()
     return all_classrooms
 
-all_classrooms = get_all_classrooms()
 
 def get_times(classroom):
     all_times = []
@@ -35,6 +34,9 @@ def get_times(classroom):
 
 # print(util.get_today())
 # print(util.get_current_time())
-print(util.isOpen(get_times("ecs-407")))
+allClasses = get_all_classrooms()
+# NOTE: cannot call it class, why?
+for classroom in allClasses:
+    print(classroom,util.isOpen(get_times(classroom)))
 
 conn.close()

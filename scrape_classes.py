@@ -1,4 +1,4 @@
-# Parse class schedule
+ # Parse class schedule
 
 
 from urllib.request import urlopen as uReq
