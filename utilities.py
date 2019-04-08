@@ -40,10 +40,13 @@ def get_current_time():
 
 
 def convert_time(time):
-    # There are three possible cases
+    # There are three main cases and some transitional edge cases
     morningCase = 'TuTh 10:30-11:45AM' #Morning - Convert both times normally
     afternoonCase = 'TuTh 12-1:15PM' #Afternoon - Convert second time to have 12 more hours
     eveningCase = 'TuTh 6-6:50PM' #Night - Convert both times to have 12 more hours
+    edgeCase1 = 'MW 10-2:15PM'
+    edgeCase2 = 'MW 11-12:15PM'
+    edgeCase3 = "MW 12-3:00PM"
 
     # Example: time = 'TuTh 12-1:15PM'
     timeRange = time.split()[1] # 12-1:15PM
@@ -56,34 +59,26 @@ def convert_time(time):
     if ":" not in secondTime:
         secondTime+=":00"
 
-    firstHour = firstTime.split(":")[0]
-    firstMinutes = firstTime.split(":")[1][:2]
-    secondHour = secondTime.split(":")[0]
-    secondMinutes = secondTime.split(":")[1][:2]
-    # Determing if morning, afternoon, or evening
+    firstHour = int(firstTime.split(":")[0])
+    firstMinutes = int(firstTime.split(":")[1][:2])
+    secondHour = int(secondTime.split(":")[0])
+    secondMinutes = int(secondTime.split(":")[1][:2])
+
+    convertedSecondTime = secondHour * 60 + secondMinutes
     if "PM" in secondTime:
-        # Evening case
-        if (firstHour*60+firstMinutes < secondHour*60+secondMinutes):
-            firstTime+="PM"
-        # Afternoon case
-        else:
-            firstTime+="AM"
-    # Morning case
-    else:
-        firstTime+="AM"
+        convertedSecondTime+=720
+    if convertedSecondTime >= 1440:
+        convertedSecondTime-=720
 
-    # Converting to minutes passed since midnight
-    convertedFirst = int(firstHour)*60+int(firstMinutes)
-    convertedSecond = int(secondHour)*60+int(secondMinutes)
+    convertedFirstTime = firstHour * 60 + firstMinutes
+    if "PM" in secondTime:
+        convertedFirstTime+=720
+    if convertedFirstTime >= 1440:
+        convertedFirstTime-=720
+    if convertedFirstTime > convertedSecondTime:
+        convertedFirstTime -=720
 
-    # # Adding time if PM
-    if "PM" in str(firstTime):
-        convertedFirst+=(12*60)
-    if "PM" in str(secondTime):
-        convertedSecond+=(12*60)
-
-
-    converted = str(convertedFirst) + "-" + str(convertedSecond)
+    converted = str(convertedFirstTime) + "-" + str(convertedSecondTime)
     return converted
 
 

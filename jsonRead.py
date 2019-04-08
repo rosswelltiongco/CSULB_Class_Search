@@ -25,4 +25,4 @@ def getOpenClasses(building):
     return sortedClassesAndTimes
 
 
-[print(room) for room in getOpenClasses("")]
+[print(room) for room in getOpenClasses("ECS")]
