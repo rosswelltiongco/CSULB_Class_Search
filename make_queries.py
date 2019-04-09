@@ -30,17 +30,8 @@ def get_times(classroom):
             all_times.append(day + " " + time)
     return all_times
 
-# print(get_times("ecs-407"))
 
-# print(util.get_today())
-# print(util.get_current_time())
-# NOTE: cannot call it class, why?
 allClasses = get_all_classrooms()
-
-# for classroom in allClasses:
-#     if "VEC" in classroom:
-#         print(classroom,util.isOpen(get_times(classroom)))
-
 
 allInfo = {}
 for x in allClasses:

@@ -89,21 +89,25 @@ def convert_time(time):
 
 testList = ['TuTh 10:30-11:45AM', 'MW 4-5:15PM', 'TuTh 8:30-9:45PM', 'TuTh 9-10:15AM', 'TuTh 12-1:15PM', 'MW 6-7:15PM', 'TuTh 6-6:50PM', 'TuTh 7-8:15PM', 'MW 1-1:50PM', 'MW 2-3:15PM', 'MW 10-11:15AM', 'M 7:30-8:20PM']
 
-# Returns how long class is open for if it is available
-# Else return false
-def isOpen(classroomTimes):
+# Returns how long class is open
+# If positive, it is open
+# If negative, it is closed
+def minutesLeft(classroomTimes):
     today = get_today()
     currentTime = get_current_time()
+    minutesLeft = 999999
     for time in classroomTimes:
         if today in time[:-2]: #Strips AM/PM for monday
             startTime = convert_time(time).split('-')[0]
             endTime = convert_time(time).split('-')[1]
             if int(startTime) < currentTime < int(endTime):
-                print(time)
-                return False
+                minutesLeft = int(endTime)-currentTime
+                return -minutesLeft
+            newTimeLeft = int(startTime) - currentTime
+            if (newTimeLeft < minutesLeft) and (newTimeLeft > 0):
+                minutesLeft = newTimeLeft
     # If none of the times are used by either day or time, it is open
-    return True
-
+    return minutesLeft
 
 """
 NOTES
