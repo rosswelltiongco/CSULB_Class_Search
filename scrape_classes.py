@@ -9,7 +9,8 @@ allClasses = []
 
 
 """GETTING DEPT URLS"""
-all_subjects_url = "http://web.csulb.edu/depts/enrollment/registration/class_schedule/Spring_2019/By_Subject/"
+all_subjects_url = "http://web.csulb.edu/depts/enrollment/registration/class_schedule/Fall_2019/By_Subject/"
+
 uClient = uReq(all_subjects_url)
 
 with uReq(all_subjects_url) as something:
