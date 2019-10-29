@@ -139,3 +139,20 @@ class Time:
 
     ecs412 = ["TuTh 8-8:50AM", "TuTh 9-10:15AM", "MW 6-7:15PM", "F 3-5:30PM", "MW 9-10:15AM", "MW 12-1:15PM", "TuTh 10:30-11:45AM", "F 11-1:30PM", "TuTh 12-1:15PM", "MW 8:30-9:45PM", "MW 4-5:15PM", "TuTh 1:30-2:45PM", "TuTh 7-8:15PM", "TuTh 7-8:15PM"]
     ecs416 = ["TuTh 1:30-2:45PM", "MW 11-12:15PM", "F 12-2:30PM", "MW 3-3:50PM", "MW 4-5:15PM", "TuTh 3-4:15PM", "TuTh 3-4:15PM", "TuTh 10:30-11:45AM", "TuTh 6-7:15PM", "MW 7:30-8:45PM", "TuTh 4:30-5:45PM", "TuTh 4:30-5:45PM", "TuTh 12-1:15PM", "MW 6-7:15PM", "TuTh 9-10:15AM", "TuTh 7:30-8:45PM", "TuTh 7:30-8:45PM"]
+
+
+ecs412 = ["TuTh 8-8:50AM", "TuTh 9-10:15AM", "MW 6-7:15PM", "F 3-5:30PM", "MW 9-10:15AM", "MW 12-1:15PM", "TuTh 10:30-11:45AM", "F 11-1:30PM", "TuTh 12-1:15PM", "MW 8:30-9:45PM", "MW 4-5:15PM", "TuTh 1:30-2:45PM", "TuTh 7-8:15PM", "TuTh 7-8:15PM"]
+# ecs416 = ["TuTh 1:30-2:45PM", "MW 11-12:15PM", "F 12-2:30PM", "MW 3-3:50PM", "MW 4-5:15PM", "TuTh 3-4:15PM", "TuTh 3-4:15PM", "TuTh 10:30-11:45AM", "TuTh 6-7:15PM", "MW 7:30-8:45PM", "TuTh 4:30-5:45PM", "TuTh 4:30-5:45PM", "TuTh 12-1:15PM", "MW 6-7:15PM", "TuTh 9-10:15AM", "TuTh 7:30-8:45PM", "TuTh 7:30-8:45PM"]
+
+from Database import *
+database = Database()
+vec420 = database.get_times("VEC-420")
+
+"""
+time = Time()
+x = time.minutesLeft(ecs412)
+print(x)
+
+y = time.minutesLeft(vec420)
+print(y)
+"""

@@ -4,6 +4,7 @@ class Database:
     def __init__(self):
         pass
 
+
     def make_database(self, full_schedule):
         conn = sql.connect('current_semester.db')
         c = conn.cursor()
