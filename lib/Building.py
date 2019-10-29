@@ -1,3 +1,7 @@
+class Search():
+    # Should I make a search class?
+    pass
+
 from Database import *
 from Time import *
 from Location import *
@@ -7,25 +11,35 @@ class Building:
         database = Database()
         self.name = building_name
         self.locations = [Location(x) for x in database.get_locations() if self.name in x]
-        self.locations.sort(key=lambda location: location.duration, reverse=True)
+        self.locations.sort(key=lambda location: location.get_duration(), reverse=True)
         # TODO: for unoccupieds: sort by longest duration
 
     def get_open_classes(self):
         for location in self.locations:
             print(location.name, location.status)
 
+    def set_time(self, hour, minutes, ampm):
+        mins_since_midnight = (hour + 12*(ampm.upper() == "PM")) * 60 + minutes
+        
+        for location in self.locations:
+            location.set_time(mins_since_midnight)
+
+
+    def set_day(self, day):
+        for location in self.locations:
+            location.set_day(day)
 
 building = Building("VEC")
-time = Time()
-database = Database()
 
-time.set_time(9,30,'pm')
-print(time.get_time())
 
 #"""
+# To change time
+building.set_time(9,30,'pm')
+#"""
+
 for location in building.locations:
-    print(location.name, location.get_status(), location.get_duration())
-#"""
+    #print(location.name, location.duration)
+    print(location.name, location.get_status(), location.get_duration(), location.time.get_time())
 
 
 #vec321 = database.get_times("VEC-321")

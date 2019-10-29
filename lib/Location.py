@@ -3,25 +3,42 @@ from Time import *
 
 class Location():
     def __init__(self, name):
-        database = Database()
-        time = Time()
+        self.database = Database()
+        self.time = Time()
+
         self.name = name
-        self.times = database.get_times(self.name)
+        self.times = self.database.get_times(self.name)
         #self.duration = time.mins_since_midnight
-        self.duration = time.minutesLeft(self.times)
-        self.status = self.duration > 0 # occupied or unoccupied
+        #self.duration = self.time.minutesLeft(self.times)
+        #self.status = self.duration > 0 # occupied or unoccupied
 
 
     def get_status(self):
-        if self.status:
+        if self.time.minutesLeft(self.times) > 0:
             return "UNOCCUPIED"
         else:
-            return "VACANT"
+            return "OCCUPIED"
+        """
+        if str(self.get_duration()) == "rest of day":
+            return "UNOCCUPIED"
+        elif (self.get_duration() > 0):
+            return "UNOCCUPIED"
+        else:
+            return "OCCUPIED"
+        """
 
     def get_duration(self):
-        if self.duration > 1500:
+        duration = self.time.minutesLeft(self.times)
+        if duration > 1500:
             return "rest of day"
-        elif self.duration > 0:
-            return self.duration
+        elif duration > 0:
+            return duration
         else:
-            return - self.duration
+            return - duration
+
+    def set_day(self, day):
+        self.time.set_day(day)
+    
+    def set_time(self, time):
+        self.time.set_time(time)
+

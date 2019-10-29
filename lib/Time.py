@@ -3,22 +3,22 @@ import datetime
 
 class Time:
     
-    self.day = self.get_today()
-    self.time = self.get_current_time()
-
+    
     def __init__(self):
         import os, time
         time.strftime('%X %x %Z')
         os.environ['TZ'] = 'US/Pacific'
         # time.tzset()
-        
+
+        self.day = self.get_today()
+        self.time = self.get_current_time()
 
     def set_day(self, new_day):
         self.day = new_day
 
 
-    def set_time(self, hour, minutes, ampm):
-        self.time = (hour + 12*(ampm.upper() == "PM")) * 60 + minutes
+    def set_time(self, time):
+        self.time = time
 
 
     def get_day(self):
