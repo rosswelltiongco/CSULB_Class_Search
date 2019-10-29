@@ -8,7 +8,7 @@ class Building:
         self.name = building_name
         self.locations = [Location(x) for x in database.get_locations() if self.name in x]
         self.locations.sort(key=lambda location: location.duration, reverse=True)
-
+        # TODO: for unoccupieds: sort by longest duration
 
     def get_open_classes(self):
         for location in self.locations:
@@ -16,11 +16,20 @@ class Building:
 
 
 building = Building("VEC")
+time = Time()
+database = Database()
 
+time.set_time(9,30,'pm')
+print(time.get_time())
+
+#"""
 for location in building.locations:
     print(location.name, location.get_status(), location.get_duration())
+#"""
 
 
+#vec321 = database.get_times("VEC-321")
+#print(vec321)
 
 """
 def getOpenClasses(self, building):

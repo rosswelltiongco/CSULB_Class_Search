@@ -1,25 +1,24 @@
 import calendar
 import datetime
 
-
 class Time:
     
+    self.day = self.get_today()
+    self.time = self.get_current_time()
+
     def __init__(self):
         import os, time
         time.strftime('%X %x %Z')
         os.environ['TZ'] = 'US/Pacific'
         # time.tzset()
-
-        self.day = self.get_today()
-        self.time = self.get_current_time()
-
+        
 
     def set_day(self, new_day):
         self.day = new_day
 
 
-    def set_time(self, new_time):
-        self.time = new_time
+    def set_time(self, hour, minutes, ampm):
+        self.time = (hour + 12*(ampm.upper() == "PM")) * 60 + minutes
 
 
     def get_day(self):
@@ -121,17 +120,15 @@ class Time:
     # If positive, it is open
     # If negative, it is closed
     def minutesLeft(self, classroomTimes):
-        today = self.get_today()
-        currentTime = self.get_current_time()
         minutesLeft = 999999
         for time in classroomTimes:
-            if today in time[:-2]: #Strips AM/PM for monday
+            if self.day in time[:-2]: #Strips AM/PM for monday
                 startTime = self.convert_time(time).split('-')[0]
                 endTime  = self.convert_time(time).split('-')[1]
-                if int(startTime) < currentTime < int(endTime):
-                    minutesLeft = int(endTime)-currentTime
+                if int(startTime) < self.time < int(endTime):
+                    minutesLeft = int(endTime)-self.time
                     return -minutesLeft
-                newTimeLeft = int(startTime) - currentTime
+                newTimeLeft = int(startTime) - self.time
                 if (newTimeLeft < minutesLeft) and (newTimeLeft > 0):
                     minutesLeft = newTimeLeft
         # If none of the times are used by either day or time, it is open
@@ -144,15 +141,17 @@ class Time:
 ecs412 = ["TuTh 8-8:50AM", "TuTh 9-10:15AM", "MW 6-7:15PM", "F 3-5:30PM", "MW 9-10:15AM", "MW 12-1:15PM", "TuTh 10:30-11:45AM", "F 11-1:30PM", "TuTh 12-1:15PM", "MW 8:30-9:45PM", "MW 4-5:15PM", "TuTh 1:30-2:45PM", "TuTh 7-8:15PM", "TuTh 7-8:15PM"]
 # ecs416 = ["TuTh 1:30-2:45PM", "MW 11-12:15PM", "F 12-2:30PM", "MW 3-3:50PM", "MW 4-5:15PM", "TuTh 3-4:15PM", "TuTh 3-4:15PM", "TuTh 10:30-11:45AM", "TuTh 6-7:15PM", "MW 7:30-8:45PM", "TuTh 4:30-5:45PM", "TuTh 4:30-5:45PM", "TuTh 12-1:15PM", "MW 6-7:15PM", "TuTh 9-10:15AM", "TuTh 7:30-8:45PM", "TuTh 7:30-8:45PM"]
 
+"""
+
 from Database import *
 database = Database()
 vec420 = database.get_times("VEC-420")
-
-"""
 time = Time()
-x = time.minutesLeft(ecs412)
-print(x)
+print(time.get_time())
+time.set_time(9,20,'pm')
+print(time.get_time())
 
 y = time.minutesLeft(vec420)
 print(y)
+
 """
