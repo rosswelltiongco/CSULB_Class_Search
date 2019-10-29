@@ -1,24 +1,24 @@
 var columnDefs = [
-    {headerName: "Athlete", field: "CLASS_NUMBER", width: 150, filter: 'agTextColumnFilter', filterParams:{
+    {headerName: "#", field: "CLASS_NUMBER", width: 90, filter: 'agTextColumnFilter', filterParams:{
         filterOptions:['contains'],
         debounceMs:0,
     }},
-    {headerName: "Country", field: "COURSE", width: 120, filter: 'agTextColumnFilter', filterParams:{
+    {headerName: "Course Name", field: "COURSE", width: 120, filter: 'agTextColumnFilter', filterParams:{
         filterOptions:['contains'],
         debounceMs: 0,
     }},
-    {headerName: "Year", field: "DAYS", width: 90, filter: 'agTextColumnFilter', filterParams:{
+    {headerName: "Days", field: "DAYS", width: 90, filter: 'agTextColumnFilter', filterParams:{
         filterOptions:['contains'],
         debounceMs: 0,
     }},
-    {headerName: "Sport", field: "TIME", width: 90, filter: 'agTextColumnFilter', filterParams:{
+    {headerName: "Time", field: "TIME", width: 90, filter: 'agTextColumnFilter', filterParams:{
         filterOptions:['contains'],
         debounceMs: 0,
     }},
-    {headerName: "Sport", field: "LOCATION", width: 90, filter: 'agTextColumnFilter', filterParams:{
+    {headerName: "Location", field: "LOCATION", width: 90, filter: 'agTextColumnFilter', filterParams:{
         filterOptions:['contains'],
         debounceMs: 0,
-    }},{headerName: "Sport", field: "INSTRUCTOR", width: 90, filter: 'agTextColumnFilter', filterParams:{
+    }},{headerName: "Instructor", field: "INSTRUCTOR", width: 90, filter: 'agTextColumnFilter', filterParams:{
         filterOptions:['contains'],
         debounceMs: 0,
     }}
