@@ -1,3 +1,6 @@
+"""
+Scrape and generate database
+"""
 from lib.Database import *
 from lib.Scraper import *
 import time

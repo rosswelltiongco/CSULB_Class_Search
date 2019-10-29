@@ -1,0 +1,17 @@
+
+room finder
+get open rooms real time
+get open rooms at a set time
+get scheudle of a specific room (sorted)
+
+viewable filter datatables
+ge requirement + rate my professor
+
+unit tests
+devops
+
+statistics: times ran, total open rooms, how long it took, etc
+
+
+page for additional study locations
+add exceptions dictionary? Library, horn center, 24hr student union
