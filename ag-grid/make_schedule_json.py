@@ -48,15 +48,19 @@ def format_time(time):
     return day + " " + time
 
 def get_schedule( json_str = False ):
-    schedule = {}
+    schedule = []
     for location in get_locations():
-        schedule[location] = get_times(location)
-
+        sub_dict = {}
+        sub_dict["LOCATION"] = location
+        sub_dict["TIMES"] = get_times(location)
+        schedule.append(sub_dict)
+        
 
     if json_str:
         return json.dumps(schedule) #CREATE JSON
 
 
-
+#"""
 with open('schedule_data.json', 'w') as the_file:
     the_file.write(get_schedule( json_str = True ))
+#"""
